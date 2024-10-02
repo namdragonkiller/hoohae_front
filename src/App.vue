@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ <section id="container">
+		<router-view />
+		<LayoutFooter msg="홍길동" v-if="getMenuInfo.isShowFooter" />
+ </section>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import LayoutFooter from './components/LayoutFooter.vue'
+import { mapGetters} from "vuex";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+	LayoutFooter,
+  },
+  computed: {
+    ...mapGetters([
+      "getMenuInfo"
+    ]),
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import './assets/css/app.css';
 </style>
